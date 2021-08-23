@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  host: localhost
+  port: 5432
+  username: hakase_dev
+  password: hakasepass
+  database: hakaseapp_development
+
+test:
+  <<: *default
+  host: localhost
+  port: 5432
+  username: hakase_dev
+  password: hakasepass
+  database: hakaseapp_test
+
+production:
+  <<: *default
+  database: hakaseapp_production
+  username: hakaseapp
+  password: <%= ENV['HAKASEAPP_DATABASE_PASSWORD'] %>
