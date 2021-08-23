@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     search = params[:search]
     if search.nil? || params[:commit] == "Cancel"
       params[:search] = ''
-      @posts = Post.all.paginate(page: params[:page], per_page: 6)
+      @posts = Post.all.paginate(page: params[:page], per_page: 5)
     elsif params[:commit] == "Sort Title(ASC)"
       @posts = Post.where('title LIKE :search', search: "%#{params[:search]}%").order(title: :asc).paginate(page: params[:page], per_page: 5)
     elsif params[:commit] == "Sort Title(Desc)"
